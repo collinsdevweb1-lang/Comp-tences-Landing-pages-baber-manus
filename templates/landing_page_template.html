@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{shop_name}} - Barbershop</title>
+    <meta name="description" content="{{meta_description}}">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: {{primary_color}};
+            --secondary-color: {{secondary_color}};
+            --accent-color: {{accent_color}};
+        }
+        .bg-primary { background-color: var(--primary-color); }
+        .text-primary { color: var(--primary-color); }
+        .border-primary { border-color: var(--primary-color); }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-900 font-sans">
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex items-center justify-center text-white overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="{{hero_image}}" alt="Façade de {{shop_name}}" class="w-full h-full object-cover brightness-50">
+        </div>
+        <div class="relative z-10 text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 uppercase tracking-tighter">{{shop_name}}</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">{{hero_subtitle}}</p>
+            <a href="#reservation" class="bg-primary hover:bg-opacity-90 text-white px-8 py-4 rounded-full text-lg font-bold transition-all uppercase">Réserver maintenant</a>
+        </div>
+    </header>
+
+    <!-- Présentation -->
+    <section class="py-20 px-4 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div>
+            <h2 class="text-3xl font-bold mb-6 border-l-4 border-primary pl-4">L'Art de la Coupe</h2>
+            <p class="text-lg text-stone-600 leading-relaxed mb-6">
+                {{description}}
+            </p>
+            <div class="flex gap-4">
+                <a href="tel:{{phone}}" class="flex items-center gap-2 text-primary font-bold"><i class="fas fa-phone"></i> {{phone}}</a>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <img src="{{image_1}}" alt="Intérieur 1" class="rounded-lg shadow-md w-full h-48 object-cover">
+            <img src="{{image_2}}" alt="Intérieur 2" class="rounded-lg shadow-md w-full h-48 object-cover mt-8">
+        </div>
+    </section>
+
+    <!-- Services (Placeholders) -->
+    <section class="py-20 bg-stone-900 text-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center uppercase tracking-widest">Nos Services</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Placeholder Service 1 -->
+                <div class="border border-stone-700 p-8 rounded-lg hover:border-primary transition-colors">
+                    <h3 class="text-xl font-bold mb-4">Coupe Classique</h3>
+                    <p class="text-stone-400 mb-4">Description à compléter par l'utilisateur.</p>
+                    <span class="text-primary font-bold text-2xl">-- €</span>
+                </div>
+                <!-- Placeholder Service 2 -->
+                <div class="border border-stone-700 p-8 rounded-lg hover:border-primary transition-colors">
+                    <h3 class="text-xl font-bold mb-4">Taille de Barbe</h3>
+                    <p class="text-stone-400 mb-4">Description à compléter par l'utilisateur.</p>
+                    <span class="text-primary font-bold text-2xl">-- €</span>
+                </div>
+                <!-- Placeholder Service 3 -->
+                <div class="border border-stone-700 p-8 rounded-lg hover:border-primary transition-colors">
+                    <h3 class="text-xl font-bold mb-4">Rituel Serviette Chaude</h3>
+                    <p class="text-stone-400 mb-4">Description à compléter par l'utilisateur.</p>
+                    <span class="text-primary font-bold text-2xl">-- €</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie -->
+    <section class="py-20 px-4 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 text-center">Galerie Réalisations</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {{#each gallery_images}}
+            <img src="{{this.url}}" alt="{{this.alt}}" class="rounded-lg shadow-sm w-full h-64 object-cover hover:scale-105 transition-transform cursor-pointer">
+            {{/each}}
+        </div>
+    </section>
+
+    <!-- Avis Clients -->
+    <section class="py-20 bg-stone-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">Ce que disent nos clients</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                {{#each reviews}}
+                <div class="bg-white p-6 rounded-xl shadow-sm">
+                    <div class="flex text-yellow-400 mb-4">
+                        {{#repeat this.rating}}<i class="fas fa-star"></i>{{/repeat}}
+                    </div>
+                    <p class="italic mb-4 text-stone-600">"{{this.text}}"</p>
+                    <div class="font-bold text-stone-900">{{this.author}}</div>
+                    <div class="text-sm text-stone-400">{{this.relative_time}}</div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+
+    <!-- Réservation & Contact -->
+    <section id="reservation" class="py-20 px-4 max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-8">Prendre rendez-vous</h2>
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <a href="https://wa.me/{{whatsapp_number}}" class="bg-green-600 text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-green-700 transition-colors">
+                <i class="fab fa-whatsapp text-xl"></i> WhatsApp
+            </a>
+            <a href="tel:{{phone}}" class="bg-stone-900 text-white px-6 py-3 rounded-lg font-bold flex items-center gap-2 hover:bg-stone-800 transition-colors">
+                <i class="fas fa-phone"></i> Appeler
+            </a>
+        </div>
+        
+        <!-- Formulaire Simple -->
+        <form class="bg-white p-8 rounded-2xl shadow-lg text-left grid md:grid-cols-2 gap-6">
+            <div class="md:col-span-2">
+                <label class="block text-sm font-bold mb-2">Nom complet</label>
+                <input type="text" class="w-full p-3 border rounded-lg" placeholder="Votre nom">
+            </div>
+            <div>
+                <label class="block text-sm font-bold mb-2">Date souhaitée</label>
+                <input type="date" class="w-full p-3 border rounded-lg">
+            </div>
+            <div>
+                <label class="block text-sm font-bold mb-2">Heure</label>
+                <input type="time" class="w-full p-3 border rounded-lg">
+            </div>
+            <button type="button" class="md:col-span-2 bg-primary text-white py-4 rounded-lg font-bold uppercase tracking-widest">Confirmer la demande</button>
+        </form>
+    </section>
+
+    <!-- Localisation -->
+    <section class="h-96 w-full relative">
+        <iframe 
+            width="100%" 
+            height="100%" 
+            frameborder="0" 
+            style="border:0" 
+            src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q={{address_encoded}}" 
+            allowfullscreen>
+        </iframe>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 bg-white p-4 rounded-lg shadow-xl text-center">
+            <p class="font-bold mb-2">{{address}}</p>
+            <a href="{{google_maps_url}}" target="_blank" class="text-primary font-bold underline">Voir l'itinéraire</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-12">
+            <div>
+                <h3 class="text-xl font-bold mb-6 uppercase tracking-widest">{{shop_name}}</h3>
+                <p class="text-stone-400">{{address}}</p>
+                <p class="text-stone-400">{{phone}}</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 uppercase">Horaires</h4>
+                <ul class="text-stone-400 space-y-2">
+                    {{#each opening_hours}}
+                    <li>{{this}}</li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6 uppercase">Suivez-nous</h4>
+                <div class="flex gap-4 text-2xl">
+                    <a href="#" class="hover:text-primary"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-primary"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 pt-8 border-t border-stone-800 text-center text-stone-500 text-sm">
+            &copy; 2024 {{shop_name}}. Tous droits réservés.
+        </div>
+    </footer>
+
+</body>
+</html>

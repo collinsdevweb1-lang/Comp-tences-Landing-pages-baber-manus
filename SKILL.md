@@ -1,11 +1,11 @@
 ---
 name: barbershop-site-generator
-description: Création automatique de landing pages modernes pour barbershops à partir d'un lien Google Maps. Analyse les données du salon (nom, photos, avis, horaires) et génère un site web responsive, optimisé pour le SEO et prêt à l'exportation.
+description: Génération automatique de landing pages modernes pour barbershops à partir d'un lien Google Maps. Analyse les données du salon (nom, photos, avis, horaires) et génère un site web responsive, optimisé pour le SEO et prêt à l'exportation.
 ---
 
-# Générateur de site Barbershop depuis Google Maps
+# Barbershop Site Generator
 
-Cette compétence permet de transformer une fiche Google Maps de barbershop en un site web professionnel complet.
+Cette compétence permet de transformer une fiche Google Maps de barbershop en un site web professionnel complet et responsive.
 
 ## Workflow d'utilisation
 
@@ -37,7 +37,7 @@ Lorsqu'un utilisateur fournit un lien Google Maps, effectuez les actions suivant
 
 ## Ressources de la compétence
 
-- `templates/landing_page_template.html` : Structure HTML/Tailwind de base.
+- `templates/landing_page_template.html` : Structure HTML/Tailwind de base avec variables de template.
 
 ## Contraintes
 - **Fidélité** : Ne jamais inventer d'informations (horaires, téléphone). Si une donnée manque, demandez à l'utilisateur.
