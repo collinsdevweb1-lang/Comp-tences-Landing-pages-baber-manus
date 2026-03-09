@@ -1,11 +1,6 @@
----
-name: barbershop-site-generator
-description: Génération automatique de landing pages modernes pour barbershops à partir d'un lien Google Maps. Analyse les données du salon (nom, photos, avis, horaires) et génère un site web responsive, optimisé pour le SEO et prêt à l'exportation.
----
+# Barbershop Site Generator (React/Vite)
 
-# Barbershop Site Generator
-
-Cette compétence permet de transformer une fiche Google Maps de barbershop en un site web professionnel complet et responsive.
+Cette compétence permet de transformer une fiche Google Maps de barbershop en un site web professionnel complet et responsive, basé sur **React (avec Vite) et Tailwind CSS**.
 
 ## Workflow d'utilisation
 
@@ -15,31 +10,32 @@ Lorsqu'un utilisateur fournit un lien Google Maps, effectuez les actions suivant
 - **Analyse visuelle** : Identifiez le style du salon (moderne, vintage, industriel) et les couleurs dominantes à partir des photos de la façade et du logo.
 - **Sélection d'images** : Identifiez les meilleures photos pour la section Hero (façade ou intérieur) et la galerie.
 
-### 2. Conception et Design
-- **Palette de couleurs** : Si aucune couleur n'est évidente, utilisez une palette classique : Noir (#1a1a1a), Blanc (#f5f5f5), et Or (#c5a059) ou Rouge/Bleu Barber Pole.
-- **Structure** : Utilisez le template situé dans `templates/landing_page_template.html` comme base.
-- **Placeholders** : Laissez des sections claires pour les services et la galerie que l'utilisateur pourra personnaliser.
+### 2. Initialisation du Projet
+- **Scaffold** : Utilisez l'outil `webdev_init_project` avec le scaffold `web-static` pour créer un nouveau projet React + TypeScript + Tailwind CSS.
+- **Nom du projet** : Utilisez une version simplifiée du nom du salon (ex: `new-land-barber-house`).
 
-### 3. Génération du Code
-- **SEO** : Générez des balises `<title>` et `<meta description>` optimisées localement (ex: "Meilleur Barbershop à [Ville] - [Nom du Salon]").
-- **Accessibilité** : Ajoutez des attributs `alt` descriptifs à toutes les images extraites.
-- **Performance** : Structurez le code pour un chargement rapide (Tailwind CSS via CDN, lazy-loading des images).
+### 3. Génération des Composants
+- **Structure** : Créez des composants React distincts pour chaque section de la page (`Hero.tsx`, `Services.tsx`, `Gallery.tsx`, `Reviews.tsx`, `Contact.tsx`, `Map.tsx`, `Footer.tsx`).
+- **Props** : Passez les données extraites de Google Maps (nom, adresse, etc.) aux composants via les props.
+- **Styling** : Utilisez les classes Tailwind CSS directement dans le JSX pour styler les composants. La palette de couleurs doit être configurable.
+
+### 4. Intégration et Finalisation
+- **Assemblage** : Importez et assemblez tous les composants dans le fichier principal `App.tsx`.
+- **SEO** : Utilisez `react-helmet` ou une technique similaire pour gérer les balises `<title>` et `<meta description>` de manière dynamique.
+- **Accessibilité** : Assurez-vous que tous les éléments interactifs sont accessibles et que les images ont des attributs `alt` descriptifs.
 
 ## Directives de contenu
 
-| Section | Contenu requis |
+| Composant | Contenu requis |
 | :--- | :--- |
-| **Hero** | Nom du salon, phrase d'accroche percutante, bouton CTA "Réserver". |
-| **Services** | Liste de services génériques (Coupe, Barbe) avec prix à compléter. |
-| **Avis** | Intégration fidèle des avis Google (nom, note, texte). |
-| **Contact** | Boutons directs pour WhatsApp et Appel, formulaire de contact simple. |
-| **Localisation** | Carte interactive (iframe) et lien d'itinéraire. |
-
-## Ressources de la compétence
-
-- `templates/landing_page_template.html` : Structure HTML/Tailwind de base avec variables de template.
+| **Hero.tsx** | Nom du salon, phrase d'accroche, bouton CTA "Réserver". |
+| **Services.tsx** | Liste des services et prix extraits de l'image ou de la description. |
+| **Reviews.tsx** | Intégration des avis Google (nom, note, texte). |
+| **Contact.tsx** | Boutons pour WhatsApp/Appel, formulaire de contact simple. |
+| **Map.tsx** | Carte interactive (iframe) et lien d'itinéraire. |
 
 ## Contraintes
-- **Fidélité** : Ne jamais inventer d'informations (horaires, téléphone). Si une donnée manque, demandez à l'utilisateur.
-- **Images** : Utilisez uniquement les URLs d'images provenant de Google Maps ou des placeholders de haute qualité si nécessaire.
-- **Export** : Le résultat final doit être un fichier HTML unique ou un projet React prêt à être déployé sur GitHub/Vercel.
+
+- **Fidélité** : Ne jamais inventer d'informations. Si une donnée manque, demandez à l'utilisateur ou utilisez un placeholder évident.
+- **Dépendances** : Limitez l'ajout de nouvelles dépendances. Privilégiez les solutions natives de React et Tailwind CSS.
+- **Export** : Le résultat final doit être un projet React complet, prêt à être zippé et envoyé à l'utilisateur, avec des instructions claires pour l'installation (`pnpm install`) et le lancement (`pnpm dev`).
